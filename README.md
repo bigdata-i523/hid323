@@ -8,9 +8,9 @@
 
 ```
 owner:
-    hid: 000
-    name: Gregor von Laszewski
-    url: https://github.com/bigdata-i523/sample-hid000
+    hid: 323
+    name: Uma M Kugan
+    url: https://github.com/bigdata-i523/sample-hid323
 ```
 
 # Paper 1
@@ -18,13 +18,11 @@ owner:
 ```
 paper1:
    author: 
-   - Gregor von Laszewski
-   - Fugang Wang
+   - Uma M Kugan
    hid:
-   - 000
-   - 001
-   title: This is my paper about xyz
-   abstract: This paper showcases this and that and the other
+   - 323
+   title: This is my paper about NoSQL Databases in support of Big Data Applications and Analytics
+   abstract: This paper will help us identify how NoSQL is efficient and cost effective in handling big data and also will highlight on why Big Data can't be handled in traditional RDBMS.
    url: https://github.com/bigdata-i523/sample-hid000/paper1/paper1.pdf
    type: latex
    status: in progress
@@ -35,9 +33,9 @@ paper1:
 ```
 paper2:
    author: 
-   - Gregor von Laszewski
+   - Uma M Kugan
    hid:
-   - 000
+   - 323
    title: This is my paper about the other abc
    abstract: This paper showcases tis and that and the other in regards to abc
    url: https://github.com/bigdata-i523/sample-hid000/paper2/paper2.pdf   
@@ -54,9 +52,9 @@ paper2:
    type: project
    type: report
    author: 
-   - Gregor von Laszewski
+   - Uma M Kugan
    hid:
-   - 000
+   - 323
    title: Benchmarking a BigData Docker deployment
    abstract: This paper showcases tis and that and the other 
    url: https://github.com/bigdata-i523/sample-pid000/project/report.pdf
