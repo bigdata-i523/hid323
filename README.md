@@ -10,7 +10,7 @@
 owner:
     hid: 323
     name: Uma M Kugan
-    url: https://github.com/bigdata-i523/sample-hid323
+    url: https://github.com/bigdata-i523/hid323
 ```
 
 # Paper 1
