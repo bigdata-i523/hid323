@@ -1,5 +1,5 @@
 Theory
-
+09/20/17 Watched all videso in the Theory Introduction section
 
 Practice
 
