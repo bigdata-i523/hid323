@@ -23,7 +23,7 @@ paper1:
    - 323
    title: This is my paper about NoSQL Databases in support of Big Data Applications and Analytics
    abstract: This paper will help us identify how NoSQL is efficient and cost effective in handling big data and also will highlight on why Big Data can't be handled in traditional RDBMS.
-   url: https://github.com/bigdata-i523/sample-hid000/paper1/paper1.pdf
+   url: https://github.com/bigdata-i523/hid323/paper1/paper1.pdf
    type: latex
    status: in progress
 ```
@@ -36,10 +36,11 @@ paper2:
    - Uma M Kugan
    hid:
    - 323
-   title: This is my paper about the other abc
-   abstract: This paper showcases tis and that and the other in regards to abc
-   url: https://github.com/bigdata-i523/sample-hid000/paper2/paper2.pdf   
-   type: word
+   Title: This is my paper about Big Data Security
+   Abstract : Data is one of the biggest asset of the companies and the data growing exponentially comes with the major problem : Security & Privacy. This paper is going to highlight on security and privacy in Big Data and their issues and challenges. 
+   url: https://github.com/bigdata-i523/hid323/paper2/paper2.pdf   
+   type: latex
+   status: in progress
 ```
 
 # Project 
@@ -55,7 +56,7 @@ paper2:
    - Uma M Kugan
    hid:
    - 323
-   title: Benchmarking a BigData Docker deployment
+   title: 
    abstract: This paper showcases tis and that and the other 
    url: https://github.com/bigdata-i523/sample-pid000/project/report.pdf
    type: latex
