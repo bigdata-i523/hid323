@@ -4,7 +4,7 @@
 
 # Theory
 
-* 08/22/17 - 08/23/17 Read and watched all videso in the Theory Introduction section
+* 08/22/17 - 08/23/17 Read and watched all videos in the Theory Introduction section
 
 # Practice
 
