@@ -1,15 +1,18 @@
+# Logistic
+
+* 08/21/17 Read the entire class overview section 
+
 # Theory
 
 * 08/22/17 - 08/23/17 Read and watched all videso in the Theory Introduction section
 
 # Practice
 
-*09/01/17 - 09/21/17 Installed Virtual Machine
+* 08/24/17 Installed VMware and Virtual Machine
 
-# Writing :
+# Writing
 
-Paper 1 : NoSql on Big Data Analytics
-
-*09/01/17 - 10/01/17 - Watching Videos, reading & taking notes on NoSql on Big Data Analytics
-
-Paper 2 : Big Data Security
+* 08/26/17 Installed and Learned Tex Maker
+* 09/01/17 Installed and Learned jabref
+* 09/15/17 Paper 1 : NoSql on Big Data Analytics
+* 09/20/17 Paper 2 : Big Data Secutiy
