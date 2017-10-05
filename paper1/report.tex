@@ -5,6 +5,13 @@
 \usepackage{endfloat}
 \renewcommand{\efloatseparator}{\mbox{}} % no new page between figures
 
+\usepackage{cite}
+
+\usepackage{biblatex}
+\addbibresource{nosql.bib}
+
+\usepackage{adjustbox}
+
 \usepackage{booktabs} % For formal tables
 
 \settopmatter{printacmref=false} % Removes citation information below abstract
@@ -14,51 +21,120 @@
 \begin{document}
 \title{NoSQL Databases in support of Big Data and Analytics}
 
-
 \author{Uma M Kugan}
-\orcid{1234-5678-9012}
 \affiliation{%
   \institution{Indiana University}
-  \streetaddress{P.O. Box 1212}
+  \streetaddress{711 N Park Avue}
   \city{Bloomington} 
-  \state{Ohio} 
-  \postcode{43017-6221}
-}
-\email{trovato@corporation.com}
+  \state{IN} 
+  \postcode{47408}
+  \country{USA}}
+\email{umkugan@iu.edu}
+
 
 % The default list of authors is too long for headers}
-\renewcommand{\shortauthors}{B. Trovato et al.}
+\renewcommand{\shortauthors}{Uma}
 
 
 \begin{abstract}
 This paper will help us identify how NoSQL is efficient and cost effective in handling big data and also will highlight on why Big Data can't be handled in traditional RDBMS.
 \end{abstract}
 
-\keywords{NoSQl, hid323}
+\keywords{i523, hid323, NoSQL}
 
 
 \maketitle
 
 \section{Introduction}
+RDBMS have always been the preferred method of storage for many years and its powerful Query language made it very user friendly.Data has grown exponentially in a past decade due to the growth of social media, e-commerce and web applications which posed a big challenge for the traditional databases.Need of the hour is not just to limit the data within the structure, but also ability and flexibility to read and store data from all sources and types, with or without structure.Organizations that collect large amounts of unstructured data are increasingly turning to nonrelational databases, now frequently called NoSQL databases.\cite{neal} There are lot of limiting factors in these databases for Big Data especially Structured schema which was one of the main reason for RDBMS to scale it for larger databases\cite{aspirenosql}.
+\section{Why NoSQL}
+The term NoSQL was first used by Carlo Strozzi to name a database management system (DBMS) he developed.This system explicitly avoided SQL as querying language, while it was still based on a relational model\cite{seasupenn}. The term NoSQL means that the database doesn't follow the relational model espoused by E.F Codd in his 1970 paper A Relational Model of Data for Large Shared Data Banks\cite{rdbms} which would become the basis for all modern RDBMS.  NoSQL doesn't mean NO to SQL. It means Not Only SQL. NoSQL means storage is just nonvolatile object store with no maintenance concerns. Most NOSQL DB's are open source which allows everyone to evaluate the tool of their choice at low cost.
 
-The \textit{proceedings} are the records of a
-conference. ACM seeks to give these
-conference by-products a uniform, high-quality appearance.  To do
-this, ACM has some rigid requirements for the format of the
-proceedings documents: there is a specified format (balanced double
-columns), a specified set of fonts (Arial or Helvetica and Times
-Roman) in certain specified sizes, a specified live area, centered on
-the page, specified size of margins, specified column width and gutter
-size \cite{editor00}.
+\section{NoSQL Types}
+In \cite{edmodel} Edlich et al. identify four classes of NoSQL systems as 'Core-NoSQL' systems: Key-Value stores, Wide column stores, Graph databases and Document stores.	
 
+\textbf{Key-Value Stores:} It is a very basic type of non-relational database where every item (value) is stored as an attribute name (key), with its value. e.g. Redis
+
+\textbf{Wide Column Stores:} Every record in the stores may differ in the number of columns. This is very important factor for analytics because it needs very low I/O and also reduces the volume of data that are read to the disk. e.g. HBase and Cassandra
+
+\textbf{Graph Database:} As the name indicates, it uses graph structures nodes and edges to represent the data. This is very useful in depicting social relationship, network topology. e.g. Neo4J 
+
+\textbf{Document Stores: }It stores the data as document typically in Jason or XML format.It is widely used due to its flexibility and ability to query the data. e.g. MongoDB and CouchDB.
+
+\section{NoSQL Type Performance Comparison}
+ Ben Scofield rated different categories of NoSQL databases as follows \cite{benrdbms}
+ 
+\begin{center}
+\begin{adjustbox}{width=10cm\textwidth}
+\small
+\begin{tabular}{|c{1cm}|c{1cm}|c{1cm}|c{1cm}|c{1cm}|c{1cm}| }
+    \hline
+        Data Models & Performance & Scalability & Flexibility & Complexity & Functionality \\ 
+    \hline\hline
+        Column-oriented store & high & high & moderate & low & minimal \\
+    \hline
+        Document-oriented store & high & variable (high) & high & low & variable (low) \\
+    \hline
+        Graph database & variable & variable & high & high & graph theory \\
+    \hline
+        Key–value store & high & high & high & none & variable (none) \\
+    \hline    
+        Relational database & variable & variable & low & moderate & relational algebra \\
+    \hline
+\end{tabular}
+\end{adjustbox}
+\end{center}
+
+
+\section{NoSQL For BigData}
+Following factors have to be considered while evaluating NoSQL for Big Data Projects:
+\textbf{\subsection{Solution Based on the project Requirements:}}
+	
+\textbf{Real time Updates for Data Analytics} - NoSQL is the solution for applications that receives large volume of data in a real time and where data insights are generated using real time data that was fed.
+	
+\textbf{Publish/Subscribe} - NoSQL is the best fit where the enterprise doesn't require complex messaging features for publishing/subscribing.
+		
+\textbf{Document based} - Application where data structure is not restricted by schema, NoSQL comes in hand in such places.
+		
+\textbf{\subsection{Limitation of traditional Databases:}}
+
+\textbf{Scalability} - RDBMS are designed for scaling up meaning if storage needs to be increased, we need to upgrade other resources in the existing machine whereas in NoSQL we just have add additional nodes in the existing cluster. 
+		
+\textbf{Acid compliance} - RDBMS are always acid compliant i.e. Atomicity, Consistency, Integrity and Durability and which of course is its strength to process transactional data while the drawback is it can't handle larger volume of data without impacting the performance. If there are use cases where we don't require ACID compliance and  where it has to handle huge volume of data in significantly very less time, then NoSQL is the solution.
+
+\textbf{Complexity} - RDBMS stores the data in defined, structured schema in tables and columns. If the data can't be converted to store in tables, it becomes cumbersome to handle such situations. \\
+
+\section{How to handle Relational Data in NoSQL}
+NoSQL database in general can't perform joins between data structures and hence the schema has to be designed in such a way so that it can support joins. Below are the key things that needs to be considered to handle relational data in a NoSQL.
+\subsection{Avoid Sub Queries:} Instead of using complex sub queries or nested joins to retrieve the data, break into multiple queries. NoSQL performances are very high when compared to traditional RDBMS Queries.
+\subsection{Denormalize the data :} For faster retrieval of data, it is essential to compromise on denormalizing the data rather than storing only foreign keys.
+\section{RDBMS to NoSQL Migration}
+Database Migrations are always cumbersome and it is better to plan well ahead and take an iterative approach.Based on the need of application, one have to choose which NoSQL DB's we are going to migrate to. \cite{aws}
+\subsection{Planning}  
+The goal of any migration should be better performance at the reduced cost with the newest technology.While migrating from RDBMS, we have to consider volume and source of data that's going to be migrated to NoSQL. All the details should be documented well so that we don't have to face unplanned surprises at the end.
+\subsection{Data Analysis} 
+This is very critical and will help in understanding the nature of the data and how that data is accessed within the application. Based on the analysis of data usage, we will be able to define how data will be read/written which will help us in building a better data model.
+\subsection{Data Modeling} 
+When migrating from any RDBMS, depending on the need of application, we may have to sometimes denormalize the data. In this phase, based on the data analysis and the tech-stream, we have to define keys and values.
+\subsection{Testing} 
+Testing is always very critical and crucial for any migration projects. All aspects of testing from unit testing, functional testing, load testing, integration testing, user acceptance testing etc., have to be carried out and outputs have to be clearly documented. 
+\subsection{Data Migration} 
+Once all the above steps are successfully tested and implemented, next final act is to migrate all data from RDBMS to NoSQL. Post implementation validation has to be carried out to make sure everything went well as per the plan and it has to be monitored for few days until the process is stabilized. If there are any issues with the migration, rollback to original state and root cause analysis have to be performed to identify and fix the issue. Once issue has been fixed, data migration has to be scheduled and this step goes in cyclic unless migration was completely successful. 
+
+\section{Advantages and DisAdvantages of NoSQL}
+NoSQL databases differ from traditional databases in features and functionality. There is no common query language, high I/O performance, horizontal scalability and don't enforce schema. It is very flexible and let the users to decide to use the data the way they want.\\
+NoSQL databases have the ability to distribute the database across multiple geographic regions to withstand regional failures and enable data localization. Unlike relational databases, NoSQL databases generally have no requirement for separate applications or expensive add-ons to implement replication.\cite{mongo}\\
+Since NOSQL doesn't enforce atomicity and hence it is not reliable where data accuracy is very critical.RDBMS are much more matured and the best technical support is available.So there is always fear of unknown until the technology gets widely accepted and used.
+
+
+\section{Conclusion}
+With the explosion of the data in the recent years, have paved the big way for the growth of Big Data and everyone wants to move their applications and data into Big Data. Building a big data environment is relatively very cheap when compared to migrating the existing data in RDBMS to NoSQL. We have to carefully weigh in, understand the data and how the data will be used in the use case to enjoy the full benefit of migrating into No SQL.
 
 \begin{acks}
-
-  The authors would like to thank 
-
+My sincere thanks to my mentor and leader Vishal Baijal and to my collegue Michael Macal for their support and suggestions to write this paper and also to my fellow classmate Andres Castro Benavides for his support.
 \end{acks}
 
 \bibliographystyle{ACM-Reference-Format}
-\bibliography{report} 
+\printbibliography 
 
 \end{document}
