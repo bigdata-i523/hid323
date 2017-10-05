@@ -5,10 +5,13 @@
 # Theory
 
 * 08/22/17 - 08/23/17 Read and watched all videos in the Theory Introduction section
+* 09/21/2017 - Finished "Overview of data science"
+* 09/29/2017 - Finished "Big Data Use Cases Survey".
 
 # Practice
 
 * 08/24/17 Installed VMware and Virtual Machine
+* 9/21/17 - Practicing Python on Ubuntu
 
 # Writing
 
