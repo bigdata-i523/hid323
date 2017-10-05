@@ -21,3 +21,8 @@
 * 09/20/17 Paper 2 : Big Data Secutiy
 * 09/21/2017 - 10/04/17 Working on Paper 1 and completed writing into sharelatex and added all references and successfully compiled along with bibliography.
 * 10/05/2017 - Uploaded upgraded bib and tex files for paper 1 to github.
+
+# Location
+Address: Chandler, AZ
+Latitude: 33.306160
+Longitude: -111.841250
