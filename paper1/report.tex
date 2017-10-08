@@ -5,12 +5,7 @@
 \usepackage{endfloat}
 \renewcommand{\efloatseparator}{\mbox{}} % no new page between figures
 
-\usepackage{cite}
 
-\usepackage{biblatex}
-\addbibresource{nosql.bib}
-
-\usepackage{adjustbox}
 
 \usepackage{booktabs} % For formal tables
 
@@ -65,9 +60,7 @@ In \cite{edmodel} Edlich et al. identify four classes of NoSQL systems as 'Core-
  Ben Scofield rated different categories of NoSQL databases as follows \cite{benrdbms}
  
 \begin{center}
-\begin{adjustbox}{width=10cm\textwidth}
-\small
-\begin{tabular}{|c{1cm}|c{1cm}|c{1cm}|c{1cm}|c{1cm}|c{1cm}| }
+\begin{tabular}{cccccc}
     \hline
         Data Models & Performance & Scalability & Flexibility & Complexity & Functionality \\ 
     \hline\hline
@@ -82,7 +75,6 @@ In \cite{edmodel} Edlich et al. identify four classes of NoSQL systems as 'Core-
         Relational database & variable & variable & low & moderate & relational algebra \\
     \hline
 \end{tabular}
-\end{adjustbox}
 \end{center}
 
 
@@ -135,6 +127,6 @@ My sincere thanks to my mentor and leader Vishal Baijal and to my collegue Micha
 \end{acks}
 
 \bibliographystyle{ACM-Reference-Format}
-\printbibliography 
+\bibliography{report,nosql}
 
 \end{document}
