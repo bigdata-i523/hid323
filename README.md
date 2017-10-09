@@ -28,7 +28,7 @@ paper1:
      Data can't be handled in traditional RDBMS.
    url: https://github.com/bigdata-i523/hid323/paper1/report.pdf
    type: latex, bibtex
-   status: complete
+   status: 100%
    chapter: Technology
 ```
    
