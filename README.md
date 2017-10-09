@@ -26,7 +26,7 @@ paper1:
      This paper will help us identify how NoSQL is efficient and cost
      effective in handling big data and also will highlight on why Big
      Data can't be handled in traditional RDBMS.
-   url: https://github.com/bigdata-i523/hid323/paper1/report.pdf
+   url: https://github.com/bigdata-i523/hid323/blob/master/paper1/report.pdf
    type: latex, bibtex
    status: 100%
    chapter: Technology
