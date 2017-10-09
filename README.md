@@ -46,7 +46,6 @@ paper2:
       growing exponentially comes with the major problem of Security
       and Privacy. This paper is going to highlight on security and
       privacy in Big Data and their issues and challenges.
-   url: https://github.com/bigdata-i523/hid323/paper2/paper2.pdf   
    type: latex
    status: in progress
 ```
@@ -65,7 +64,6 @@ paper2:
    - 323
    title: 
    abstract: This paper showcases tis and that and the other 
-   url: https://github.com/bigdata-i523/sample-pid000/project/report.pdf
    type: latex
 ```
    
