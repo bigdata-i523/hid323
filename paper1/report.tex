@@ -48,15 +48,16 @@ The term NoSQL was first used by Carlo Strozzi to name a database management sys
 
 \section{NoSQL Types}
 In \cite{edmodel} Edlich et al. identify four classes of NoSQL systems as 'Core-NoSQL' systems: Key-Value stores, Wide column stores, Graph databases and Document stores.	
+\begin{description}
 
-\subsection{Key-Value Stores:} It is a very basic type of non-relational database where every item (value) is stored as an attribute name (key), with its value. e.g. Redis
+\item[Key-Value Stores]: It is a very basic type of non-relational database where every item (value) is stored as an attribute name (key), with its value. e.g. Redis
 
-\subsection{Wide Column Stores:} Every record in the stores may differ in the number of columns. This is very important factor for analytics because it needs very low I/O and also reduces the volume of data that are read to the disk. e.g. HBase and Cassandra
+\item[Wide Column Stores]: Every record in the stores may differ in the number of columns. This is very important factor for analytics because it needs very low I/O and also reduces the volume of data that are read to the disk. e.g. HBase and Cassandra
 
-\subsection{Graph Database:} As the name indicates, it uses graph structures nodes and edges to represent the data. This is very useful in depicting social relationship, network topology. e.g. Neo4J 
+\item[Graph Database]: As the name indicates, it uses graph structures nodes and edges to represent the data. This is very useful in depicting social relationship, network topology. e.g. Neo4J 
 
-\subsection{Document Stores: }It stores the data as document typically in Jason or XML format.It is widely used due to its flexibility and ability to query the data. e.g. MongoDB and CouchDB.
-
+\item[Document Stores]: It stores the data as document typically in Jason or XML format.It is widely used due to its flexibility and ability to query the data. e.g. MongoDB and CouchDB.
+\end{description}
 
 \section{NoSQL For BigData}
 Following factors have to be considered while evaluating NoSQL for Big Data Projects:
