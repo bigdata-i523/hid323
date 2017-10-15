@@ -4,11 +4,10 @@ owner:
     name: Uma M Kugan
     url: https://github.com/bigdata-i523/hid323
 paper1:
-    abstract: 'This paper will help us identify how NoSQL is efficient and cost effective
+    abstract: >
+        This paper will help us identify how NoSQL is efficient and cost effective
         in handling big data and also will highlight on why Big Data can''t be handled
         in traditional RDBMS.
-
-        '
     author:
         - Uma M Kugan
     chapter: Technology
