@@ -8,7 +8,6 @@ paper1:
         These data no longer fits into defined structure and hence the need for handling the big data using NoSQL. 
         This paper will highlight on what is NoSQL and where and when it should be used for and also why Big Data can not 
         be handled in traditional RDBMS.
-
     author:
         - Uma M Kugan
     chapter: Technology
@@ -19,6 +18,7 @@ paper1:
         and Analytics
     type: latex
     url: https://github.com/bigdata-i523/hid323/blob/master/paper1/report.pdf
+    
 paper2:
     abstract: This paper showcases tis and that and the other
     author:
