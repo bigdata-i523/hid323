@@ -32,7 +32,7 @@ The data volume is increasing at high velocity and it comes from various sources
 
 \section{Introduction}
 
-RDBMS have always been the preferred method of storage for many years and its powerful Query language made it very user friendly.Data has grown exponentially in a past decade due to the growth of social media, e-commerce and web applications which posed a big challenge for the traditional databases.Need of the hour is not just to limit the data within the structure, but also ability and flexibility to read and store data from all sources and types, with or without structure.Organizations that collect large amounts of unstructured data are increasingly turning to non relational databases, now frequently called NoSQL databases \cite{neal}.There are lot of limiting factors in these databases for Big Data especially Structured schema which was one of the main reason for RDBMS to scale it for larger databases \cite{aspire}.
+RDBMS have always been the preferred method of storage for many years and its powerful Query language made it very user friendly.Data has grown exponentially in a past decade due to the growth of social media, e-commerce and web applications which posed a big challenge for the traditional databases.Need of the hour is not just to limit the data within the structure, but also ability and flexibility to read and store data from all sources and types, with or without structure."Organizations that collect large amounts of unstructured data are increasingly turning to non relational databases, now frequently called NoSQL databases" \cite{neal}.There are lot of limiting factors in these databases for Big Data especially Structured schema which was one of the main reason for RDBMS to scale it for larger databases \cite{aspire}.
 
 \section{Limitation of RDBMS}
 
@@ -48,25 +48,25 @@ Time Consuming - Analyzing data in real time is highly impossible with RDBMS and
 
 \section{NoSQL}
 
-The term NoSQL was first used by Carlo Strozzi to name a database management system (DBMS) he developed.This system explicitly avoided SQL as querying language, while it was still based on a relational model \cite{seasupenn}.The term NoSQL means that the database does not follow the relational model espoused by E.F Codd in his 1970 paper, ``A Relational Model of Data for Large Shared Data Banks which would become the basis for all modern RDBMS`` \cite{rdbms}.NoSQL does not mean NO to SQL.It means Not Only SQL. NoSQL means storage is just nonvolatile object store with no maintenance concerns. Most NoSQL Databases are open source which allows everyone to evaluate the tool of their choice at low cost.NoSQL databases, because of it's simpler data model, it does not need DBA's to maintain the health of the database. NoSQL databases are widely used in big data and in real-time  applications.  
+"The term NoSQL was first used by Carlo Strozzi to name a database management system (DBMS) he developed.This system explicitly avoided SQL as querying language, while it was still based on a relational model" \cite{seasupenn}.The term NoSQL means that the database does not follow the relational model espoused by E.F Codd in his 1970 paper, ``A Relational Model of Data for Large Shared Data Banks which would become the basis for all modern RDBMS`` \cite{rdbms}.NoSQL does not mean NO to SQL.It means Not Only SQL. NoSQL means storage is just nonvolatile object store with no maintenance concerns. Most NoSQL Databases are open source which allows everyone to evaluate the tool of their choice at low cost.NoSQL databases, because of it's simpler data model, it does not need DBA's to maintain the health of the database. NoSQL databases are widely used in big data and in real-time  applications.  
 
 \section{NoSQL Types}
 
 In Edlich et al. identify four classes of NoSQL systems as 'Core-NoSQL' systems: Key-Value stores, Wide column stores, Graph databases and Document stores \cite{edmodel}.
 \begin{description}
 
-\item[Key-Value Stores] - It is a very basic type of non-relational database where every item (value) is stored as an attribute name (key), with its value. Examples include Redis, Amazon DynamoDB and Oracle NoSQL.
+\item[Key-Value Stores] - Every item is stored as an attribute name, with its value i.e. in key value pair. It is very basic non relational data types which is most commonly used. Example include Redis, Amazon DynamoDB and Oracle NoSQL. 
 
 \item[Wide Column Stores] - Every record in the stores may differ in the number of columns. This is very important factor for analytic because it needs very low I/O and also reduces the volume of data that are read to the disk. It is also known as tabular NoSQL database.Examples include HBase, Google BigTable and Cassandra.
 
 \item[Graph Database] - As the name indicates, it uses graph structures nodes and edges to represent the data.This is very useful in depicting social relationship, network topology. Examples include Neo4J and DataStax Enterprise Graph. 
 
-\item[Document Stores] - It stores the data as document typically in JASON or XML format.It is widely used due to its flexibility and ability to query the data. Examples include MongoDB and CouchDB.
+\item[Document Stores] - It stores the data as document typically in JASON or XML format. It is very flexibile and one can easily access the data.This is used widely in many places. Examples include MongoDB and CouchDB.
 \end{description}
 
 \section{Advantages of NoSQL}
 
-NoSQL databases differ from traditional databases in features and functionality. There is no common query language, high I/O performance, horizontal scalability and do not enforce schema.RDBMS scales up vertically by adding extra CPU, RAM,etc., to a centralized machine, whereas a NoSQL database scales horizontally by adding extra nodes \cite{DataStax}. It is very flexible and let the users to decide to use the data the way they want.NoSQL databases have the ability to distribute the database across multiple geographic regions to withstand regional failures and enable data localization. Unlike relational databases, NoSQL databases generally have no requirement for separate applications or expensive add-ons to implement replication \cite{mongo}.Since NOSQL does not enforce atomicity and hence it is not reliable where data accuracy is very critical.NoSQL data is replicated on each node so that it offers continuous availability with zero downtime.RDBMS supports master-slave architecture so data can always be written to master and read only data is available in all slave machines whereas in NoSQL, both read and writes are enabled in all nodes.
+NoSQL databases differ from traditional databases in features and functionality. There is no common query language, high I/O performance, horizontal scalability and do not enforce schema."RDBMS scales up vertically by adding extra CPU, RAM,etc., to a centralized machine, whereas a NoSQL database scales horizontally by adding extra nodes" \cite{DataStax}. It is very flexible and let the users to decide to use the data the way they want.NoSQL databases can be distributed across many geographic regions to withstand any regional failures and enable data localization. NoSQL databases does not have need specific applications or hardwares to implement replication \cite{mongo}.Since NoSQL does not enforce atomicity and hence it is not reliable where data accuracy is very critical. The main advantage of NoSQL is its data is always replicated on each node and so the data ia always available and there is zero downtime.RDBMS supports master-slave architecture so data can always be written to master and read only data is available in all slave machines whereas in NoSQL, both read and writes are enabled in all nodes.
 
 \section{NoSQL Challenges}
 
