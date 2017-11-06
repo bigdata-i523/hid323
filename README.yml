@@ -18,7 +18,25 @@ paper1:
     
 paper2:
     status: Review Date 11.06.2017
-    abstract: In recent history, the explosion of smart devices, social media platforms and the Internet of Things has resulted in major replication of data.  This data is transferred at high speeds, in large volumes and in a variety of different platforms. Data is one of the biggest assets of companies and with the exponential growth of data comes an increasing problem: Security and Privacy. Security and privacy have become a major initiative for every organization that has or utilizes databases.  These organizations need to protect their brands, avoid penalties, and, in worst case scenarios, avoid circumstances in which they may either lose a significant amount of business or their business as a whole. The computer science industry, alongside of these organizations, need to continue to develop ways to protect, utilize, and gain real-time insight from the data that each organization has. This paper is going to highlight security and privacy in Big Data, alongside of specific issues and challenges related to security.
+    abstract: >
+        In recent history, the explosion of smart devices, social
+        media platforms and the Internet of Things has resulted in
+        major replication of data.  This data is transferred at high
+        speeds, in large volumes and in a variety of different
+        platforms. Data is one of the biggest assets of companies and
+        with the exponential growth of data comes an increasing
+        problem: Security and Privacy. Security and privacy have
+        become a major initiative for every organization that has or
+        utilizes databases.  These organizations need to protect their
+        brands, avoid penalties, and, in worst case scenarios, avoid
+        circumstances in which they may either lose a significant
+        amount of business or their business as a whole. The computer
+        science industry, alongside of these organizations, need to
+        continue to develop ways to protect, utilize, and gain
+        real-time insight from the data that each organization
+        has. This paper is going to highlight security and privacy in
+        Big Data, alongside of specific issues and challenges related
+        to security.
     author:
         - Uma M Kugan
     hid:
