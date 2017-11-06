@@ -12,6 +12,7 @@
 
 * 08/24/17 Installed VMware and Virtual Machine
 * 9/21/17 - Practicing Python on Ubuntu
+* 10/20/17 - Finished wordcount experiment in Python
 
 # Writing
 
@@ -22,6 +23,8 @@
 * 09/21/2017 - 10/04/17 Working on Paper 1 and completed writing into sharelatex and added all references and successfully compiled along with bibliography.
 * 10/05/2017 - Uploaded upgraded bib and tex files for paper 1 to github.
 * 10/08/2017 - Uploaded paper 1 with the correction to github.
+* 10/15/2017 - 11/4/2017  Working on Paper 2 and completed writing into sharelatex and added all references and successfully compiled along with bibliography.
+* 11/05/2017 - Uploaded bib and tex files for paper 2 to github.
 
 
 # Location
