@@ -32,7 +32,7 @@ The data volume is increasing at high velocity and it comes from various sources
 
 \section{Introduction}
 
-RDBMS have always been the preferred method of storage for many years and its powerful Query language made it very user friendly. Data has grown exponentially in a past decade due to the growth of social media, e-commerce and web applications which posed a big challenge for the traditional databases. Need of the hour is not just to limit the data within the structure, but also ability and flexibility to read and store data from all sources and types, with or without structure. "Organizations that collect large amounts of unstructured data are increasingly turning to non relational databases, now frequently called NoSQL databases" \cite{neal}. There are lot of limiting factors in these databases for Big Data especially Structured schema which was one of the main reason for RDBMS to scale it for larger databases \cite{aspire}.
+RDBMS have always been the preferred method of storage for many years and its powerful Query language made it very user friendly. Data has grown exponentially in a past decade due to the growth of social media, e-commerce and web applications which posed a big challenge for the traditional databases. Need of the hour is not just to limit the data within the structure, but also ability and flexibility to read and store data from all sources and types, with or without structure. Companies that has larger amount of unstructured data are shifting away from traditional relational databases to NoSQL \cite{neal}. There are lot of limiting factors in these databases for Big Data especially Structured schema which was one of the main reason for RDBMS to scale it for larger databases \cite{aspire}.
 
 \section{Limitation of RDBMS}
 
@@ -55,7 +55,7 @@ Time Consuming - Analyzing data in real time is highly impossible with RDBMS and
 In Edlich et al. identify four classes of NoSQL systems as 'Core-NoSQL' systems: Key-Value stores, Wide column stores, Graph databases and Document stores \cite{edmodel}.
 \begin{description}
 
-\item[Key-Value Stores] - Every item is stored as an attribute name, with its value i.e. in key value pair. It is very basic non relational data types which is most commonly used. Example include Redis, Amazon DynamoDB and Oracle NoSQL. 
+\item[Key-Value Stores] - Key is the unique identifier or label of an item whose data or its location is stored in the value. It is very basic non relational data types which is most commonly used. Example include Redis, Amazon DynamoDB and Oracle NoSQL. 
 
 \item[Wide Column Stores] - Every record in the stores may differ in the number of columns. This is very important factor for analytic because it needs very low I/O and also reduces the volume of data that are read to the disk. It is also known as tabular NoSQL database.Examples include HBase, Google BigTable and Cassandra.
 
@@ -66,7 +66,7 @@ In Edlich et al. identify four classes of NoSQL systems as 'Core-NoSQL' systems:
 
 \section{Advantages of NoSQL}
 
-NoSQL databases differ from traditional databases in features and functionality. There is no common query language, high I/O performance, horizontal scalability and do not enforce schema. "RDBMS scales up vertically by adding extra CPU, RAM,etc., to a centralized machine, whereas a NoSQL database scales horizontally by adding extra nodes" \cite{DataStax}. It is very flexible and let the users to decide to use the data the way they want. Data localization in NoSQL databases is acheived by distributing it across many geographic regions. NoSQL databases does not have need specific applications or hardwares to implement replication \cite{mongo}. Since NoSQL does not enforce atomicity and hence it is not reliable where data accuracy is very critical. The main advantage of NoSQL is its data is always replicated on each node and so the data is always available and there is zero downtime. RDBMS supports master-slave architecture so data can always be written to master and read only data is available in all slave machines whereas in NoSQL, both read and writes are enabled in all nodes. In general most of the NoSQL databases performance is better than SQL databases.
+NoSQL databases differ from traditional databases in features and functionality. There is no common query language, high I/O performance, horizontal scalability and do not enforce schema. RDBMS scales up vertically making single CPU works faster and performance can be increased adding extra CPU or RAM, whereas a NoSQL database scales horizontally by making many CPUs works together and also by dividing the jobs into multiple chunks \cite{DataStax}. It is very flexible and let the users to decide to use the data the way they want. Data localization in NoSQL databases is acheived by distributing it across many geographic regions. NoSQL databases does not have need specific applications or hardwares to implement replication \cite{mongo}. Since NoSQL does not enforce atomicity and hence it is not reliable where data accuracy is very critical. The main advantage of NoSQL is its data is always replicated on each node and so the data is always available and there is zero downtime. RDBMS supports master-slave architecture so data can always be written to master and read only data is available in all slave machines whereas in NoSQL, both read and writes are enabled in all nodes. In general most of the NoSQL databases performance is better than SQL databases.
 
 \section{NoSQL Challenges}
 
@@ -104,7 +104,7 @@ When migrating from any RDBMS, depending on the need of application, we may have
 
 \subsection{Testing} 
 
-Testing is always very critical and crucial for any migration projects. All aspects of testing from unit testing, functional testing, load testing, integration testing, user acceptance testing etc., have to be carried out and outputs have to be clearly documented. 
+Testing is always very critical and crucial for any migration projects. We have to define all possible test cases and different types of testing: unit, functional, load, integration, user acceptance and smoke testing have to be performed and outputs have to be clearly documented.
 
 \subsection{Data Migration} 
 
