@@ -39,6 +39,7 @@ paper2:
         to security.
     author:
         - Uma M Kugan
+    chapter: Security
     hid:
         - 323
     title: Big Data Security and Privacy
