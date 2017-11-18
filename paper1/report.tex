@@ -52,7 +52,7 @@ Time Consuming - Analyzing data in real time is highly impossible with RDBMS and
 
 \section{NoSQL Types}
 
-In Edlich et al. identify four classes of NoSQL systems as 'Core-NoSQL' systems: Key-Value stores, Wide column stores, Graph databases and Document stores \cite{edmodel}.
+In Edlich et al. identify four classes of NoSQL systems as 'Core-NoSQL' systems. NoSQL systems are primarily differentiated by data model and also on how the data is stored. They are Key-Value stores, Wide column stores, Graph databases and Document stores \cite{edmodel}.
 \begin{description}
 
 \item[Key-Value Stores] - Key is the unique identifier or label of an item whose data or its location is stored in the value. It is very basic non relational data types which is most commonly used. Example include Redis, Amazon DynamoDB and Oracle NoSQL. 
@@ -66,15 +66,15 @@ In Edlich et al. identify four classes of NoSQL systems as 'Core-NoSQL' systems:
 
 \section{Advantages of NoSQL}
 
-NoSQL databases differ from traditional databases in features and functionality. There is no common query language, high I/O performance, horizontal scalability and do not enforce schema. RDBMS scales up vertically making single CPU works faster and performance can be increased adding extra CPU or RAM, whereas a NoSQL database scales horizontally by making many CPUs works together and also by dividing the jobs into multiple chunks \cite{DataStax}. It is very flexible and let the users to decide to use the data the way they want. Data localization in NoSQL databases is acheived by distributing it across many geographic regions. NoSQL databases does not have need specific applications or hardwares to implement replication \cite{mongo}. Since NoSQL does not enforce atomicity and hence it is not reliable where data accuracy is very critical. The main advantage of NoSQL is its data is always replicated on each node and so the data is always available and there is zero downtime. RDBMS supports master-slave architecture so data can always be written to master and read only data is available in all slave machines whereas in NoSQL, both read and writes are enabled in all nodes. In general most of the NoSQL databases performance is better than SQL databases.
+NoSQL databases differ from traditional databases in features and functionality. There is no common query language, high I/O performance, horizontal scalability and do not enforce schema. RDBMS scales up vertically making single CPU works faster and performance can be increased adding extra CPU or RAM, whereas a NoSQL database scales horizontally by making many CPUs works together and also by dividing the jobs into multiple chunks \cite{datastax}. It is very flexible and let the users to decide to use the data the way they want. Data localization in NoSQL databases is acheived by distributing it across many geographic regions. NoSQL databases does not have need specific applications or hardwares to implement replication \cite{mongo}. Since NoSQL does not enforce atomicity and hence it is not reliable where data accuracy is very critical. The main advantage of NoSQL is its data is always replicated on each node and so the data is always available and there is zero downtime. RDBMS supports master-slave architecture so data can always be written to master and read only data is available in all slave machines whereas in NoSQL, both read and writes are enabled in all nodes. In general most of the NoSQL databases performance is better than SQL databases.
 
 \section{NoSQL Challenges}
 
-NoSQL databases have created lot of interests in each organization to move away slowly from traditional databases but there are many challenges to overcome. RDBMS are much more matured, been around for many years and the best technical support is available. So there is always fear of unknown until the technology gets widely accepted and used. Most of the NoSQL databases are open source and support and reassurance that any organization gets from their traditional RDBMS vendors are challenged. Even though NoSQL goal is to provide no admin solution,in current trend, it requires lots of skills to maintain and learn. It is highly tempting for any organization to adopt living edge technology, but that adoption needs to be embraced with selection of best tool and with extreme caution \cite{dbkumar}. Ad-hoc query analysis is quite complex in NoSQL databases and it requires expertise to write even a simple query.
+NoSQL databases have created lot of interests in each organization to move away slowly from traditional databases but there are many challenges to overcome. RDBMS are much more matured, been around for many years and the best technical support is available. So there is always fear of unknown until the technology gets widely accepted and used \cite{neal}. Most of the NoSQL databases are open source and support and reassurance that any organization gets from their traditional RDBMS vendors are challenged. Even though NoSQL goal is to provide no admin solution,in current trend, it requires lots of skills to maintain and learn. It is highly tempting for any organization to adopt living edge technology, but that adoption needs to be embraced with selection of best tool and with extreme caution \cite{dbkumar}. Ad-hoc query analysis is quite complex in NoSQL databases and it requires expertise to write even a simple query.
 
 \section{NoSQL For Big Data}
 
-When to choose NoSQL over an RDBMS depends on ACID (Atomicity, Consistency, Isolation, Durability) vs BASE (Basically Available, Soft state, Eventual consistency) and also on the type of the data that the organization is dealing with. Based on the project requirements, If the real time updates is needed to perform data analytics, NoSQL is the solution for applications that receives large volume of data in a real time and where data insights are generated using real time data that was fed. NoSQL is the best fit where the enterprise does not require complex messaging features for publishing/subscribing. NoSQL comes handy where data structure is not restricted by schema(schema less design). Many NoSQL database compromises consistency over availability and data partition.
+When to choose NoSQL over an RDBMS depends on ACID (Atomicity, Consistency, Isolation, Durability) vs BASE (Basically Available, Soft state, Eventual consistency) and also on the type of the data that the organization is dealing with. Based on the project requirements, If the real time updates is needed to perform data analytics, NoSQL is the solution for applications that receives large volume of data in a real time and where data insights are generated using real time data that was fed \cite{datastax}. NoSQL is the best fit where the enterprise does not require complex messaging features for publishing/subscribing. NoSQL comes handy where data structure is not restricted by schema(schema less design). Many NoSQL database compromises consistency over availability and data partition \cite{volt}.
 
 \section{How to handle Relational Data in NoSQL}
 
@@ -88,23 +88,23 @@ NoSQL database in general can not perform joins between data structures and henc
 
 \section{RDBMS to NoSQL Migration}
 
-Database Migrations are always cumbersome and it is better to plan well ahead and take an iterative approach. Based on the need of application, one have to choose which NoSQL database we are going to migrate to  \cite{aws}.
+Database Migrations are always cumbersome and it is better to plan well ahead and take an iterative approach. Based on the need of application, one have to choose which NoSQL database we are going to migrate to \cite{aws}.
 
 \subsection{Planning}  
 
-The goal of any migration should be better performance at the reduced cost with the newest technology. While migrating from RDBMS, we have to consider volume and source of data that is going to be migrated to NoSQL. All the details should be documented well so that we do not have to face unplanned surprises at the end.
+The goal of any migration should be better performance at the reduced cost with the newest technology. While migrating from RDBMS, we have to consider volume and source of data that is going to be migrated to NoSQL. All the details should be documented well so that we do not have to face unplanned surprises at the end \cite{mongrdbms}.
 
 \subsection{Data Analysis} 
 
-This is very critical and will help in understanding the nature of the data and how that data is accessed within the application. Based on the analysis of data usage, we will be able to define how data will be read/written which will help us in building a better data model.
+This is very critical and will help in understanding the nature of the data and how that data is accessed within the application. Based on the analysis of data usage, we will be able to define how data will be read/written which will help us in building a better data model \cite{mongrdbms}.
 
 \subsection{Data Modeling} 
 
-When migrating from any RDBMS, depending on the need of application, we may have to sometimes denormalize the data. In this phase, based on the data analysis and the tech-stream, we have to define keys and values.
+When migrating from any RDBMS, depending on the need of application, we may have to sometimes denormalize the data. In this phase, based on the data analysis and the tech-stream, we have to define keys and values \cite{aws}.
 
 \subsection{Testing} 
 
-Testing is always very critical and crucial for any migration projects. We have to define all possible test cases and different types of testing: unit, functional, load, integration, user acceptance and smoke testing have to be performed and outputs have to be clearly documented.
+Testing is always very critical and crucial for any migration projects. We have to define all possible test cases and different types of testing: unit, functional, load, integration, user acceptance and smoke testing have to be performed and outputs have to be clearly documented \cite{aws}.
 
 \subsection{Data Migration} 
 
