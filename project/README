@@ -1,1 +1,43 @@
+Hardware List:
+
+3 Raspberry Pi 
+Micro SD Cards (16+ GB)
+USB to Micro USB Cables
+
+1. Install Raspbian on all the Micro SD Cards – For this, you may follow the OS installation guide on Raspberry Pi home page –
+
+https://www.raspberrypi.org/documentation/installation/installing-images/
+
+2. Enable SSH – After Raspbian installation, enable SSH on all your Raspberry Pi Nodes. You may use this link for instructions –
+ https://www.raspberrypi.org/documentation/remote-access/ssh/ 
+
+3. Change Raspberry Pi Host Name –
+
+Change the labeled with “127.0.1.1” hostname “raspberrypi” in “/etc/hosts” file (in most of the cases it is the last line in the file).
+Leave all the other entries as it is.
+sudo nano /etc/hosts
+Change local Hostname in “/etc/hostname” file.
+sudo nano /etc/hostname
+Initialize hostname using “hostname.sh” script
+sudo /etc/init.d/hostname.sh
+
+4. Update Raspberry Pi packages using the following command –
+
+sudo apt-get update && sudo apt-get upgrade
+#sudo shutdown -r now #I don’t think we need this line to shut down the device.
+
+Get hostname for your PI
+
+hostname -I
+
+sudo nmap -sn 192.168.1.0/24
+
+5. Change the default password
+Type in $sudo passwd pi and enter a new password, please don't skip this step!
+
+Repeat
+Now repeat the above for each of the RPis.
+
+Note : Passwordless Login (Optional Step) – Create and copy ssh keys to Raspberry for Passwordless Login. 
+For instructions follow this link – https://www.raspberrypi.org/documentation/remote-access/ssh/passwordless.md
 
