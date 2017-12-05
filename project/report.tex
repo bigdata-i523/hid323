@@ -1,1 +1,496 @@
+Skip to content
+Help save net neutrality! A free, open internet is once again at stake—and we need your help.
+Learn more  Dismiss
+This repository
+Search
+Pull requests
+Issues
+Marketplace
+Explore
+ @UMAKUGAN
+ Sign out
+ Watch 3
+  Star 0  Fork 2 bigdata-i523/hid305
+ Code  Issues 0  Pull requests 0  Projects 0  Wiki  Insights
+Branch: master Find file Copy pathhid305/project/report.tex
+18816a5  9 minutes ago
+@acastrob acastrob Add files via upload
+1 contributor
+RawBlameHistory     
+476 lines (316 sloc)  27.6 KB
+\documentclass[sigconf]{acmart}
 
+\input{format/i523}
+
+
+\begin{document}
+	\title{CMD5 Plugin to Create a Docker Swarm Cluster on 3 Raspberry PIs}
+	
+	\author{Andres Castro Benavides}
+	\orcid{1234-5678-9012}
+	\affiliation{%
+		\institution{Indiana University}
+		\streetaddress{107 S. Indiana Avenue}
+		\city{Bloomington}
+		\state{Indiana}
+		\postcode{43017-6221}
+	}
+	\email{acastrob@iu.edu}
+	
+	\author{Uma M Kugan}
+	\affiliation{%
+		\institution{Indiana University}
+		\streetaddress{107 S. Indiana Avenue}
+		\city{Bloomington}
+		\state{Indiana}
+		\postcode{43017-6221}
+	}
+	\email{umakugan@iu.edu}
+	% The default list of authors is too long for headers}
+	\renewcommand{\shortauthors}{Uma Kugan, Andres Castro}
+	\begin{abstract}
+		Information technologies are evolving from mainly one-host environments to more distributed environment. Docker Swarm makes it possible to avoid having a single point of failure and instead, have multiple nodes that can be properly balanced and contain replicas of the information. Currently, Dockers must be individually downloaded, installed and configured on each physical computer in order for the desired computers to work in swarm mode. This paper details the development of a plug-in that would allow CloudMesh to deploy a Docker Swarm cluster.  The creation of this plug-in would be the first step towards the development of a tool which would allow larger debian based networks to work as container oriented virtual environments with optimized usage of resources.
+	\end{abstract}
+	
+	\keywords{Raspberry Pi, Cloudmesh, CMD5, Big Data, Big Data, i523, HID305, HID323}
+	
+	\maketitle
+	
+	\section{Introduction}
+	
+	\subsection{Docker: Swarm mode, Current Use, Installation and Configuration}
+	Docker is the technology used for containerization for software development. It is an open source tool which makes it easy to deploy applications. Applications are packaged in containers and then it is shipped to all the platforms that is supposed to work with. Applications are divided into manageable sizes and all the dependent functions are added and individually packaged. Both Linux and Windows are supported by Docker.
+	
+	Docker Swarm is a clustering and scheduling tool for Docker containers. A swarm is nothing but multiple Docker hosts which run in swarm mode and act as managers to manage delegation and workers will run swarm services). A given Docker host can be a manager or a worker or it can perform both roles. If any of the worker node becomes unavailable, manager schedules that node’s tasks on other nodes. A node is an instance of the docker engine participating in the swarm \cite{dockersdoc}.
+	
+	A swarm is made up of multiple nodes. We need to execute docker swarm init to enable swarm mode and to make current machine a swarm manager,
+	run docker swarm join on other machines to add them to the swarm as workers and run docker node ls on the manager to view the nodes in this swarm.
+	
+	Docker Swarms are used to orchestrate processes, optimizing the use or resources across clusters.  In other words, the use of Docker Swarms allow individual computers to work as a cluster, sharing their RAM, processors, physical memory, among other features or abilities.    The docker, when used in swarm mode, evaluates the assets across the network and manages tasks in real time. Each computer can contribute its assets to complete tasks in the most efficient way. It is dynamic and adapts based on the available resources and current demands.   
+	
+	In order to set up a Docker Swarm, there needs to be direct access to each machine that will be used as a node (an instance of Docker that will be part of the swarm).  In order to set up  the nodes, the docker must be independently installed and configured on each machine.  Then, each machine must be added to the swarm, allowing it to communicate or interact with the other nodes.  
+	
+	This processes not only requires human resources (technicians working on installation and configuration) but also demands these actions be repeated manually on each individual node or manager. While this can be done virtually, it still requires individual attention in the setup of each machine.  In order to optimize the setup of Docker Swarms, CloudMesh could be utilized to centralize installation and configuration of every node and manager.  
+	
+	
+	\subsubsection{Inside Docker}
+	The four main internal components of docker are Docker Client and Server, Docker Images, Docker Registries, and Docker Containers.
+	\subsubsection{Docker Client and Server}
+	The docker server gets the request from the docker client and then process it accordingly. Docker server and docker client can either run on the same machine or a local docker client can be connected with a remote server running on another machine \cite{turnbull2014docker}.
+	Fig. 1 Docker architecture \cite{turnbull2014docker}.
+	\subsubsection{Docker Images}
+	Base image are the Operating system images such as Ubuntu 14.04 LTS, or Fedora 20 which creates a container to run Operating system. The docker file contains a list of instructions to build an image. When using docker, we start with a base image, boot up, create changes and those changes are saved in layers forming another image \cite{rad2017introduction}.
+	\subsubsection{Docker Registries}
+	Docker images are placed in docker registries. It is same as source code repositories where images can be pushed or pulled from a single source.
+	\subsubsection{Docker Containers}
+	Docker image creates a docker container. Containers have everything for the application to run on its own.
+	
+	\subsection{Benefits of using Docker}
+	\subsubsection{Open Source Technology}
+	The Docker containers are based on open standards which means that anyone can contribute to the Docker tool and at the same time customize it for their needs, if the features they are looking for is not already available.
+	\subsubsection{Portability}
+	Docker makes distributed applications to be dynamic and portable which can be run anywhere which makes it extremely popular among developers.
+	\subsubsection{Sharing}
+	Docker is integrated with a software sharing and distribution mechanism that allows for sharing and using container content which helps the tasks of both the developer and the operations team.
+	\subsubsection{Elimination of Environmental Inconsistencies}
+	Any changes made in one environment will be shared across other environment or all the applications can exist in the single environment.
+	\subsubsection{Resource Isolation}
+	Resource isolation adds to the security of running containers on a given host. Docker uses Namespaces technology to isolate work spaces called containers. Namespace is created when container is run and access is limited to that namespace only. Every container in Docker will have its own work space which makes it easier debug if there are issues with any particular container.
+	\subsubsection{Easy Integration}
+	Docker can be easily integrated into a variety of infrastructure tools like Amazon Web Services, Ansible, IBM Bluemix, Jenkins, Google Cloud Platform, Oracle Container Cloud Service, Microsoft Azure to name a few.
+	\subsubsection{Better Security}
+	Docker provides a interface for developers and IT teams to define and manage their security configurations for applications as it navigates from one stage to another.
+	
+	\subsection{Docker - Use Cases}
+	The Docker platform is the only container platform to build, secure and manage the variety of applications from development to production both on premises and in the cloud. It also creates room for innovation, increases time to market, highly agile. Docker supports diverse set of applications and infrastructure for both developers and IT. It transforms IT without having to re-tool, re-code or re-vamp existing applications, policies or staff \cite{hackernoon}.
+	\subsection{DevOps}
+	The main goal of DevOps is to eliminate the gap between the developers and IT operations team. Docker with DevOps get the developers and operations team to work together so that they both understand the challenges faced by each other, apply DevOps practices \cite{hackernoon}.
+	\subsection{CI/CD}
+	Continuous Integration and Continuous Deployment (CI/CD) are the most common use cases of Docker. Continuous Integration testing and Continuous Deployment allows developers to build codes, test them in any environment. Docker integration with Jenkins and GitHub making it easier for developers to build codes, test them in GitHub and trigger a build in Jenkins and adding the image in Docker registries \cite{hackernoon}.
+	\subsection{Docker Containers As A Service}
+	Docker help any organization to  modernize their application architecture. It can deploy scalable services securely on a wide variety of platforms, improving flexibility and maximizing capacity. Best use case for Docker installation is the US Government where they enhanced their applications and made their components and services of their system and easily transportable/shareable with other agencies within the government \cite{hackernoon}.
+	
+	\subsection{Docker - Services}
+	\subsubsection{Docker Engine}
+	Docker Engine is the foundation for the application platform which is used for creating and running Docker containers. It is supported on Linux, Windows, Cloud and Mac OS. It is lightweight, open source and integrated with a work flow to build and containerize applications. User interface is very simple and it makes the environment easily portable from single container on single host to multiple applications on a many number of hosts \cite{hackernoon}.
+	\subsubsection{Docker Enterprise}
+	Docker Enterprise provides an integrated platform for both developers and IT operations team where container management and deployment services are together for end-to-end agile application portability. It is easy to manage, monitor and secure images both within the registry and those deployed across various clusters \cite{hackernoon}.
+	\subsubsection{Docker Hub}
+	Docker Hub functions as a hosted registry service that helps you store, manage, share and integrate images across various developer work flows. Integration testing is done each time when the image is shared \cite{hackernoon}.
+	\subsubsection{Docker Compose}
+	Docker Compose is a tool that developers deploy to define and run all multi-container Docker applications. Single host can be used to isolate
+	multiple environments, even if they are of the same name. Data volume is copied automatically from old container whenever a new container is created. Compose uses the previous configuration to create the new container which reduces the time for replicating the same changes to the environment \cite{hackernoon}.
+	
+	
+	\subsection{What is CloudMesh}
+	CloudMesh is an innovative tool that allows communication and interaction between cloud based solutions.  Not all clouds are docker based and there are different types of virtual and cloud environments. Through CloudMesh, data can be shared and utilized by cloud solutions that are not otherwise programed to communicate with each other.  Cloud mesh does not just manage a series of clouds, but centralizes and deploys them as one main system that manages the data resources.
+	
+	**Quote teacher=
+	Cloudmesh is a project to easily manage virtual machines and bare metal provisioned operating systems in a multicloud environment. We are also providing the ability to deploy platforms.**
+	
+	\subsection{Creating CloudMesh plug-ins}
+	$what it currently does and has the potential to do$.  
+	By creating CloudMesh plug-ins, it is possible to  extend its potential from diferent kinds of cloud based environments interconnection to deployment of a container management system, in this case, Docker .  
+	
+	Utilizing CloudMesh to Centralize Docker Swarm Installation Cloud Mesh does not have a plugin that allows you to deploy container solutions on physical networks.  Create a plugin that would allow Cloud Mesh to deploy container solutions (in this case, the Swarm mode of Docker) to a physical devient based network (in this case, a series of raspberry pies).  Could be used as a model to deploy other types of container oriented solutions.  It is taking a simple network (Debian based netword and allowing it to centralize resources and assigning tasks and optimizing different functions by installing a container management system, called Docker Swarm.
+	
+	In order to simulate the deployment of a Docker Swarm cluster, this Cloudmesh project develops a Cloudmesh plugin, that deploys a Docker Swarm cluster on three Raspberry Pis, allowing them to be part of this multi cloud environment.
+	
+	The cloud mesh allows Methods you to deploy the Docker Swarms (are container management tools) to the raspberry pies.     
+	
+	
+	
+	\section{Methods: Proposed Solution}
+	About the current solution:
+	
+	\subsection{Hardware}
+	
+	For the current proposed solution, the different pieces of hardware were chosen based on criteria such as Compatibility and Price.
+	
+	The following is a list of the hardware that was used  and below that list there is a description of each piece of hardware that was used.
+	
+	3 Raspberry Pi
+	3 Micro SD Cards (64 GB)
+	3 USB to Micro USB Cables for power supply to the Raspberry Pi’s
+	1 External monitor (for the configuration only).
+	
+	\subsubsection{Raspberry Pi}
+	
+	For this experiment, the 3 machines that were used were Raspberry Pi 3 Model B.
+	Raspberry Pis are single boarded computers, that come in a small presentation. They have been developed with education and extension in mind, making them very popular in the academic and entrepreneur communities. The specifications of the model that has been used for this experiment are the following:
+	
+	CPU: 1.2 GHZ quad-core ARM Cortex A53 (ARMv8 Instruction Set)
+	GPU: Broadcom VideoCore IV @ 400 MHz
+	Memory: 1 GB LPDDR2-900 SDRAM
+	USB ports: 4
+	Network: 10/100 MBPS Ethernet, 802.11n Wireless LAN, Bluetooth 4.0
+	Cite {}  https://hackaday.com/2016/02/28/introducing-the-raspberry-pi-3/
+	
+	They are interacting with each other using a private wireless network, and they have been assigned static Internet Protocol Addresses. In this case 192.168.1.85, 192.168.1.86 and 192.168.1.87.
+	
+	
+	\subsubsection{Micro SD Cards}
+	
+	Because of its architecture, Raspberry devices require the use of Micro SD Cards to contain the Operative system and other files. They emulate the Hard drive resource used on other kinds of computers.
+	The reason that it is required to have at least 16 GB of memory, is because there will be several pieces of software installed in the devices, each one of them with different requirements:
+	
+	Docker Memory Requirements:
+	
+	• 8GB of RAM for manager nodes or nodes running DTR
+	• 4GB of RAM for worker nodes
+	• 3GB of free disk space
+	~/cite{dockerdoc2017}
+	
+	So at least 12 of the GB would be required for Docker and 4 GB used for the proper functioning of Raspbian. ~/cite{rpicards2017}
+	
+	Taking these requirements in consideration, there should be a minimum of 16GB of free space in the MicroSD in order to perform this experiment. 
+	
+	The MicroSD cards used were SanDisc Memory Cards with a 64GB capacity.
+	
+	\subsubsection{Micro USB Cables}
+	3 USB to Micro USB Cables for power supply to the Raspberry Pi’s
+	Since these small computers don’t use the regular power supply chords, they are equipped with MicroUSB ports to power the device.
+	All of these devices are plugged to a main power outlet that allows to charge multiple devices at the same time.
+	There are other options to power the devices include, such as attaching them to external batteries.
+	
+	\subsubsection{External monitor}
+	
+	Since the Raspberry Pi’s are headless machines, they require to be accessed directly for the initial set up and after that it is possible to continue the configuration and installation process using any kind of remote access, like SSH or RealVNC.
+	For this initial connection, any kind of screen that is HDMI compatible is useful.
+	In this case the initial setup of the RPis was performed on a Toshiba 55 inch HDTV with HDMI port. After that they were accessed from a Laptop computer with Linux Ubuntu 17.10, using Remmina via ssh (XORG).
+	
+	\subsubsection{Initial input devices}
+	
+	In order to set up the devices. The Raspberry Pi will require a set of initial input devices attached to each computer.
+	For this exercise, a USB enabled standard keyboard and a USB enabled standard mouse were used.
+	
+	\subsection{Operative system}
+	Currently, the default way to deploy the operating system to the Raspberry Pi is by using an Operating System installation Manager called Noobs -which stands for “New Out Of Box Software”-. This manager can be downloaded directly from the Raspberry Pi website and it includes several Operating system options, among them:
+	
+	Raspbian
+	Pidora
+	LibreELEC
+	OSMC
+	RISC OS
+	Arch Linux
+	
+	Since Raspbian is the default Operating system and most commonly used, this experiment decided to use it. This is also helpful because there is material available in different websites with instructions on how to install Docker in Debian based Machines. Raspbian is Debian based.
+	Another important reason is that Docker has as a requirement that the Linux kernel version on which it will be installed is 3.10 or higher. The Kernel version of the version of Raspbian that was used is 4.9.
+	
+	\subsubsection{Raspbian}
+	
+	The version of Raspbian that was used has the following specifications:
+	Release date: 2017-11-16
+	Kernel version: 4.9
+	
+	\subsubsection{Docker}
+	
+	There are several versions of Docker available. Each version with their own advantages and disadvantages. Because of the architecture used by Raspberry Pi -ARM instead of AMD-, the Docker version used is “Docker for Debian ARM”. With the following Specifications:
+	
+	Version 17.09.0-ce
+	Release 2017-09-26
+	
+	This version of Docker is Community Edition (CE), which means that it is available for free and can be installed on bare metal or cloud infrastructure. This flexibility is good for the experiment, because it will be installed on Raspberry Pi’s, which are considered physical devices or bare metal Machines.
+	Cite dockerdoc
+	
+	\subsection{Prerequisites}
+	
+	Before using the proposed solution, the user’s environment needs to meet the following requirements:
+	
+	\subsubsection{OS: Raspbian}
+	Raspbian must be installed and configured on all MicroSD Cards. – For this, the user may follow the OS installation guide on Raspberry Pi home page –
+	This requirement exists because there is a function that is being explored to capture Raspberry Pi’s images to be deployed later on and avoid this pre requisite, but it is not ready yet.
+	
+	\subsubsection{OS: update repositories}
+	In order to ensure that the user is accessing the latest version available of the software, it is important to update the Raspbian repositories. For example, the user can access the teminal and enter the following commands:
+	
+	sudo apt-get update
+	sudo apt-get upgrade
+	
+	The first time that the user runs one of these commands, the user may need to enter the root password.
+	This process might take a few minutes.
+	
+	\subsubsection{Remote access setup}
+	Enable SSH on the Raspberry Pi’s. – After Raspbian installation, enable SSH on all your Raspberry Pi machines. 
+	
+	\subsubsection{Changing hostnames}
+	3. Change Raspberry Pi Host Name –
+	
+	Change the labeled with “127.0.1.1” hostname “raspberrypi” in “/etc/hosts” file (in most of the cases it is the last line in the file).
+	Leave all the other entries as it is.
+	sudo nano /etc/hosts
+	Change local Hostname in “/etc/hostname” file.
+	sudo nano /etc/hostname
+	Initialize hostname using “hostname.sh” script
+	sudo /etc/init.d/hostname.sh
+	
+	Get hostname for your PI
+	
+	hostname -I
+	
+	sudo nmap -sn 192.168.1.0/24
+	
+	5. Install Docker using following command –
+	For details, you may follow this link – https://www.raspberrypi.org/blog/docker-comes-to-raspberry-pi/
+	
+	curl -sSL https://get.docker.com | sh
+	
+	Run apt-get update
+	Since Raspbian is Debian based, we will use apt to install Docker. But first, we need to update.
+	
+	sudo apt-get update
+	
+	After, make sure your user account can access the Docker client with this command:
+	
+	usermod pi -aG docker
+	If your username isn't pi then replace pi with alex for instance.
+	
+	6. Change the default password
+	
+	Type in sudo passwd pi and enter a new password, please don't skip this step!
+	
+	Repeat
+	Now repeat the above for each of the RPis.
+	
+	\subsubsection{Purchasing the hardware}
+	The hardware was purchased via Amazon and took anywhere between 2 to 5 days to arrive.
+	
+	\subsection{steps followed. Testing shell commands prior to integrations with cloudmesh}
+	Since Raspberry pi is not currently listed under the supported operative systems, All the commands used in Debian were successfully tested in the Raspberry Pi.
+	
+	\subsubsection{installing and configuring Docker Swarm}
+	on the manager
+	sudo docker swarm init --advertise-addr 192.168.1.85
+	
+	on the nodes, to add them to the docker group:
+	sudo usermod -a -G docker USER
+	
+	Next steps.  (
+	https://howchoo.com/g/njy4zdm3mwy/how-to-run-a-raspberry-pi-cluster-with-docker-swarm
+	
+	https://medium.com/@bossjones/how-i-setup-a-raspberry-pi-3-cluster-using-the-new-docker-swarm-mode-in-29-minutes-aa0e4f3b1768
+	)
+	Configure swarm mode
+	
+	pi85 -  192.168.1.85
+	pi86 -  192.168.1.86 -
+	pi87 -  192.168.1.87
+	
+	On all of them:
+	curl -sSL https://get.docker.com | sh
+	
+	On the one I wanted to make a manager:
+	sudo docker swarm init --advertise-addr 192.168.1.85
+	
+	On the non manager ones, added them to the docker group:
+	sudo usermod -a -G docker USER
+	
+	https://www.raspberrypi.org/blog/docker-comes-to-raspberry-pi/
+	
+	Info on how to constrain nodes: https://stackoverflow.com/questions/45641674/how-to-specify-a-manager-leader-in-a-docker-swarm-constraint
+	
+	docker swarm join --token SWMTKN-1-0bhq5xg5u419pi8hyn9x7obp10xknehwpkwvsnssqez4gr12lo-0dcwh20wq461ucw7om69jplsj 198.168.1.85:2377
+	
+	To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
+	
+	
+	\subsubsection{Installing the components via ssh into every node.}
+	Usig the external tv, the usb keyboard and mouse, it was generated an ssh key and then we used Remmina to create a XORG ocnnection  to each Raspberry pi to set it us.
+	The components were installed in the following order:
+	Raspbian.
+	Updated the files using the following shell command...
+	cloudmesh: following the instructions found in:....
+	Docker CE ARM....Using the following commands
+	
+	\subsubsection{add the workers to the manager node.}
+	
+	
+	\subsection{Research}
+	
+	\subsubsection{Other functions considered}
+	For this case, initially, CaptureImage and a second function called DeployRaspbian.
+	
+	
+	def CaptureImage(rPiIp, imageName, password):
+	pw = password
+	imageDir = imageName
+	ip = rPiIp
+	with sh.contrib.sudo(pw, with=True):
+	Print (ip)        
+	ssh pi@ip "echo” +pw +” +”| sudo -S dd if=/dev/mmcblk0 bs=1M | gzip -" | dd of=imageDir
+	
+	this line was returning an invalid syntax, mainly because this is the terminal command trying to use the variable and calling them from python. Since there was not a lot of time the team decided to postpone both this function and the following: DeployRaspbian.
+	
+	def DeployRaspbian(self, diskName, imageName):
+	We will need to retrieve the following info from the user: Value1: disk name (I.e.  /dev/bkp)
+	Value2:the directory where the image is stored and name of the image (i.e. ~/Desktop/raspbian.gz).  
+	I am not sure I am using the varibles properly
+	﻿diskNm = glob.glob(diskName)
+	﻿imageNm = glob.glob(imageName)
+	pw = password in password
+	
+	diskutil unmountDisk diskNm
+	
+	with sh.contrib.sudo(pw, with=True):
+	
+	gzip -dc diskNm | sudo dd of=imageName bs=1m conv=noerror,sync
+	
+	
+	
+	\subsubsection{Final code}
+	
+	an use the following command
+	
+	sudo hostname hostName
+	
+	then, on our Primary RPi we can edit “/etc/hosts” to add a line with the new hostname:
+	ip hostName
+	
+	Since this is a copy of an old raspbian, it will have an old ssh key. Do we have to change it? If this was more formal we would have to address it as a security concern, but same thing would have to apply being able to have root access via ssh…. What do you think?
+	
+	then we install Docker: curl -sSL https://get.docker.com | sh
+	
+	ssh pi@ip curl -sSL https://get.docker.com | sh
+	we will need to
+	If nodeType == “manager”:
+	sudo docker swarm init --advertise-addr ip
+	
+	If nodeType == “worker”:
+	
+	sudo usermod -a -G docker USER
+	
+	
+	Def InstallDocker (newHostname, ipAddress, nodeType)
+	hostName=newHostname
+	ip=ipAddress
+	first the configuration part where we need to generate an ssh key and maybe Collect hostnames or change them
+	
+	if we want to change the hostname, we can just overwrite the line that says “127.0.0.1 raspberrypi” -this is the default value- in the RPi directory /etc/hosts. I think that the easiest way to do it is with the following:
+	after ssh-ing into the RPi we can use the following command
+	
+	sudo hostname hostName
+	
+	then, on our Primary RPi we can edit “/etc/hosts” to add a line with the new hostname:
+	ip hostName
+	
+	Since this is a copy of an old raspbian, it will have an old ssh key. Do we have to change it? If this was more formal we would have to address it as a security concern, but same thing would have to apply being able to have root access via ssh…. What do you think?
+	
+	then we install Docker: curl -sSL https://get.docker.com | sh
+	
+	ssh pi@ip curl -sSL https://get.docker.com
+	we will need to
+	If nodeType == “manager”:
+	sudo docker swarm init --advertise-addr ip
+	
+	If nodeType == “worker”:
+	
+	sudo usermod -a -G docker USER
+	
+	********
+	CMS CaptureImage (?) (lets do this one last, and just start with a golden image created by us. I’ll do that)
+	
+	CMS DeployDebian (in our case it is raspbian, but if everything works well this could be used in any Debian based docker swarms as well). I see this as deploying it from a local repository, yet we can create a function to download the image….We’ll see.
+	
+	CMS ConfDebianForDocker change hostnames (optional) Generate ssh.
+	
+	CMS InstallDocker
+	
+	curl -sSL https://get.docker.com | sh
+	
+	
+	CMS ConfigureDocker (I think here we should take in from the user whether the OS will carry a Docker Manager or a worker. And whether it will join an already created swarm or create one.)
+	
+	
+	
+	\section{Conclusions}
+	
+	
+	
+	\subsection{Evaluation}
+	
+	\subsection{Challenges}
+	In order for this exacersize of deploying DOcker to the differentRasoberry
+	Security and dynamic…..
+	
+	\subsubsection{Security}
+	Bypassing the passwords is not safe...
+	
+	
+	\section{other options considered}
+	It says that we will need a setup.py
+	And a py file, this is the example that we can work on  bar.py
+	
+	There is an Example of Date Parsing using Cloudmesh from our class here. They generated something called mycommand01.py and datepars.py   
+	
+	Since all of the deployment can successfully be done via terminal in Raspbian, As a team there was a decition to be man=de between two options to follow the same steps described above:
+	
+	option 1. A bash script for every part of the deployment and wrap it in python. Even intertwining them like this.-the  second one reminds me a lot of the way that the teacher organized the plugin development for cloudmesh-  
+	option 2.Use the SH subprocess inlcuded in python 2.5-3.5. Some info here. And more here this one looks like another nice example.  
+	For what Ive seen, they have already created Plugins to deploy other software but I have not checked that part at all, if it is similar to what we want to deploy or at least it has components we could use that would be nice.  
+	*****
+	
+	
+	\begin{acks}
+		The authors would like to thank Dr. Gregor von Laszewski for his support and suggestions on this project.
+	\end{acks}
+	
+	\bibliographystyle{ACM-Reference-Format}
+	\bibliography{main}
+	
+	\newpage
+	
+	\appendix
+	
+	\section{Work Breakdown}
+	
+	\begin{description}
+		
+		\item[] Uma Kugan.
+		
+		\item[] Andres Castro Benavides.
+		
+		\item[Editing:] Andres Castro Benavides and Uma Kugan.
+		
+	\end{description}
+	
+\end{document}
