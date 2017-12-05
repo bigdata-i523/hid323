@@ -14,16 +14,16 @@ def call(cmd, ignore_return_code=False):
        return stdout
 
 def docker_instal(hostnm):
-self.call("ssh $hostnm curl -sSL https://get.docker.com | sh”)
+	self.call("ssh $hostnm curl -sSL https://get.docker.com | sh”)
 
     
 def swarm_instal(hostnm,hosttyp):
-   	       if $hosttyp == “Master”:
-         		self.call("sudo docker swarm init --advertise-addr " + $hostnm)
+	if $hosttyp == “Master”:
+         	self.call("sudo docker swarm init --advertise-addr " + $hostnm)
        	else:
-          		jointkn = self.call("sudo docker swarm join-token worker”)
-          		testsh = “ssh $hostnm  + self.call(jointkn)”
-			self.call(testsh)
+          	jointkn = self.call("sudo docker swarm join-token worker”)
+          	testsh = “ssh $hostnm  + self.call(jointkn)”
+		self.call(testsh)
 
 def pull(self):
    nodes = self.call("docker node ls | grep Ready | awk -F'[[:space:]][[:space:]]+' '{print $2}'").rstrip().split('\n')
