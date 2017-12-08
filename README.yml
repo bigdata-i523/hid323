@@ -4,7 +4,13 @@ owner:
     name: Uma M Kugan
     url: https://github.com/bigdata-i523/hid323
 paper1:
-    abstract: The data volume is increasing at high velocity and it comes from various sources with different formats.These data no longer fits into defined structure and hence the need for handling the big data using NoSQL.This paper will highlight on what is NoSQL and where and when it should be used for and also why Big Data can not be handled in traditional RDBMS.
+    abstract: >
+        The data volume is increasing at high velocity and it comes
+        from various sources with different formats.These data no
+        longer fits into defined structure and hence the need for
+        handling the big data using NoSQL.This paper will highlight on
+        what is NoSQL and where and when it should be used for and
+        also why Big Data can not be handled in traditional RDBMS.
     author:
         - Uma M Kugan
     chapter: Technology
@@ -44,7 +50,7 @@ paper2:
         - 323
     title: Big Data Security and Privacy
     type: latex
-    url: https://github.com/bigdata-i523/hid323/blob/master/paper2/report.pdf
+    url: https://github.com/bigdata-i523/hid323/blob/master/paper2/
 project:
     review: Dec 4 2017
     author:
