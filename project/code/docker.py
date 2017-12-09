@@ -2,6 +2,8 @@
 import subprocess
 import sys
 import threading
+import os
+import argparser
 
 def call(cmd, ignore_return_code=False):
    print('Running: \n' + cmd + '\n')
@@ -43,3 +45,18 @@ def instal(self):
     step4.wait()
     step5 = self.call("sudo apt-get -y install raspberrypi-ui-mods")
     step5.wait()
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("hostnm", help="Enter the Host Name")
+    parser.add_argument("hosttyp", help="Please Enter Manager or Worker")
+    args = parser.parse_args()
+
+    instal()
+    docker_instal(args.hostnm)
+    swarm_instal(args.hostnm, args.hosttyp)
+
+
+if __name__ == "__main__":
+    main()
+
