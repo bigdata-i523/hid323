@@ -3,7 +3,7 @@ import subprocess
 import sys
 import threading
 import os
-import argparser
+import argparse
 
 def call(cmd, ignore_return_code=False):
    print('Running: \n' + cmd + '\n')
@@ -18,35 +18,30 @@ def call(cmd, ignore_return_code=False):
 
 
 def docker_instal(hostnm):
-    cmd = 'ssh hostnm curl -sSL https://get.docker.com | sh'
-    self.call(cmd)
+    cmd = 'ssh ' + hostnm ' curl -sSL https://get.docker.com | sh'
+    call(cmd)
 
 
 def swarm_instal(hostnm, hosttyp):
     if hosttyp == "Master":
-        self.call("sudo docker swarm init --advertise-addr " + hostnm)
+        call("sudo docker swarm init --advertise-addr " + hostnm)
     else:
         joincmd = 'sudo docker swarm join-token worker'
-        jointkn = self.call(joincmd)
-        testsh = "ssh hostnm + self.call(jointkn)"
-        self.call(testsh)
+        jointkn = call(joincmd)
+        testsh = 'ssh ' + hostnm + call(jointkn)
+        call(testsh)
 
-def pull(self):
-    nodes = self.call("docker node ls | grep Ready | awk -F'[[:space:]][[:space:]]+' '{print $2}'").rstrip().split('\n')
+def pull():
+    nodes = call("docker node ls | grep Ready | awk -F'[[:space:]][[:space:]]+' '{print $2}'").rstrip().split('\n')
 
-def instal(self):
-    step1 = self.call("sudo apt-get update -y")
-    step1.wait()
-    step2 = self.call("sudo apt-get -y install curl")
-    step2.wait()
-    step3 = self.call("sudo apt-get upgrade -y")
-    step3.wait()
-    step4 = self.call("sudo apt-get dist-upgrade -y")
-    step4.wait()
-    step5 = self.call("sudo apt-get -y install raspberrypi-ui-mods")
-    step5.wait()
+def instal():
+    step1 = call("sudo apt-get update -y")
+    step2 = call("sudo apt-get -y install curl")
+    step3 = call("sudo apt-get upgrade -y")
+    step4 = call("sudo apt-get dist-upgrade -y")
+    step5 = call("sudo apt-get -y install raspberrypi-ui-mods")
 
-def main():
+def main(hostnm1, master):
     parser = argparse.ArgumentParser()
     parser.add_argument("hostnm", help="Enter the Host Name")
     parser.add_argument("hosttyp", help="Please Enter Manager or Worker")
@@ -59,4 +54,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
