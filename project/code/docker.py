@@ -5,7 +5,7 @@ import threading
 import os
 import argparse
 
-def call(cmd, ignore_return_code=False):
+def callproc(cmd, ignore_return_code=False):
    print('Running: \n' + cmd + '\n')
    ps = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
    returncode = ps.wait()
@@ -19,27 +19,28 @@ def call(cmd, ignore_return_code=False):
 
 def docker_instal(hostnm):
     cmd = 'ssh ' + hostnm ' curl -sSL https://get.docker.com | sh'
-    call(cmd)
+    callproc(cmd)
 
 
 def swarm_instal(hostnm, hosttyp):
     if hosttyp == "Master":
-        call("sudo docker swarm init --advertise-addr " + hostnm)
+        swrmcmd = 'ssh ' + hostnm + " sudo docker swarm init "
+        callproc(swrmcmd)
     else:
         joincmd = 'sudo docker swarm join-token worker'
-        jointkn = call(joincmd)
-        testsh = 'ssh ' + hostnm + call(jointkn)
-        call(testsh)
+        jointkn = callproc(joincmd)
+        testsh = 'ssh ' + hostnm + ' ' + callproc(jointkn)
+        callproc(testsh)
 
 def pull():
-    nodes = call("docker node ls | grep Ready | awk -F'[[:space:]][[:space:]]+' '{print $2}'").rstrip().split('\n')
+    nodes = callproc("docker node ls | grep Ready | awk -F'[[:space:]][[:space:]]+' '{print $2}'").rstrip().split('\n')
 
 def instal():
-    step1 = call("sudo apt-get update -y")
-    step2 = call("sudo apt-get -y install curl")
-    step3 = call("sudo apt-get upgrade -y")
-    step4 = call("sudo apt-get dist-upgrade -y")
-    step5 = call("sudo apt-get -y install raspberrypi-ui-mods")
+    step1 = callproc("sudo apt-get update -y")
+    step2 = callproc("sudo apt-get -y install curl")
+    step3 = callproc("sudo apt-get upgrade -y")
+    step4 = callproc("sudo apt-get dist-upgrade -y")
+    step5 = callproc("sudo apt-get -y install raspberrypi-ui-mods")
 
 def main(hostnm1, master):
     parser = argparse.ArgumentParser()
