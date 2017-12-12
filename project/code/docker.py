@@ -61,22 +61,24 @@ def instal():
          # print (line)
         step=callproc(line)
 
-def main(hostnm1, master):
-    parser = argparse.ArgumentParser()
-    parser.add_argument("hostnm", help="Enter the Host Name")
-    parser.add_argument("hosttyp", help="Please Enter Manager or Worker")
-    args = parser.parse_args()
+ # def main(hostnm1, master):
+ #   parser = argparse.ArgumentParser()
+ #   parser.add_argument("hostnm", help="Enter the Host Name")
+ #   parser.add_argument("hosttyp", help="Please Enter Manager or Worker")
+ #   args = parser.parse_args()
 
-    instal()
-    docker_instal(args.hostnm)
-    swarm_instal(args.hostnm, args.hosttyp)
-
+ 
 f = open('docker-config.yaml')
 config = yaml.load(f)
 f.close()
 print config['master']
-print config['worker']
+print config['worker1']
+print config['worker2']
+print config['worker3']
 
+instal()
+docker_instal(master)
+swarm_instal(args.hostnm, args.hosttyp)
 
 if __name__ == "__main__":
     main()
