@@ -41,10 +41,9 @@
 	\subsection{Docker: Swarm mode, Current Use, Installation and Configuration}
 	Docker is the technology used for containerization for software development. It is an open source tool which makes it easy to deploy applications. Applications are packaged in containers and then it is shipped to all the platforms that is supposed to work with. Applications are divided into manageable sizes and all the dependent functions are added and individually packaged. Both Linux and Windows are supported by Docker.
 	
-	Docker Swarm is a clustering and scheduling tool for Docker containers. A swarm is nothing but multiple Docker hosts which run in swarm mode and act as managers to manage delegation and workers will run swarm services). A given Docker host can be a manager or a worker or it can perform both roles. If any of the worker node becomes unavailable, manager schedules that node’s tasks on other nodes. A node is an instance of the docker engine participating in the swarm \cite{dockerdoc2017}.
+	Docker Swarm is a clustering and scheduling tool for Docker containers. A swarm is nothing but multiple Docker hosts which run in swarm mode and act as managers to manage delegation and workers will run swarm services). A given Docker host can be a manager or a worker or it can perform both roles. If any of the worker node becomes unavailable, manager schedules that node's tasks on other nodes. A node is an instance of the docker engine participating in the swarm \cite{dockerdoc2017}.
 	
-	A swarm is made up of multiple nodes. We need to execute docker swarm init to enable swarm mode and to make current machine a swarm manager,
-	run docker swarm join on other machines to add them to the swarm as workers and run docker node ls on the manager to view the nodes in this swarm.
+	A swarm is made up of multiple nodes. We need to execute docker swarm init to enable swarm mode and to make current machine a swarm manager, run docker swarm join on other machines to add them to the swarm as workers and run docker node ls on the manager to view the nodes in this swarm.
 	
 	Docker Swarms are used to orchestrate processes, optimizing the use or resources across clusters.  In other words, the use of Docker Swarms allow individual computers to work as a cluster, sharing their RAM, processors, physical memory, among other features or abilities.    The docker, when used in swarm mode, evaluates the assets across the network and manages tasks in real time. Each computer can contribute its assets to complete tasks in the most efficient way. It is dynamic and adapts based on the available resources and current demands.   
 	
@@ -116,7 +115,22 @@
 	
 	In order to simulate the deployment of a Docker Swarm cluster, this Cloudmesh project develops a Cloudmesh plug in, that deploys a Docker Swarm cluster on three Raspberry Pi, allowing them to be part of this multi cloud environment.
 	
-	The cloud mesh allows Methods you to deploy the Docker Swarms (are container management tools) to the raspberry pies.     
+	The cloud mesh allows Methods you to deploy the Docker Swarms (are container management tools) to the raspberry pi's.
+	
+	\section{What is Raspberry Pi}
+	The Raspberry Pi is a credit-card-sized computer with ARM processor that can run a Linux desktop operating system. Raspberry PI can plug into TV and a keyboard. It is a little computer which can be used for many of the things that desktop PC does, like spreadsheets, word processing, browsing the internet, playing games and also to play high-definition video. Raspberry is not intended to replace personal computer as its OS support, memory etc are limited when compared to Laptop \cite{Rpi}.
+	
+    \subsection{Differences between Laptop and a Pi}
+    Raspberry Pi uses an ARM based processor like ARM Cortex A7 or A53 depending upon the model while the traditional PC/Laptop uses a conventional x86 /x64 Processor from either Intel or AMD. Embedded systems had low cost and low power requirements and since ARM processor used in the Raspberry Pi is used in embedded systems, A raspberry pi consumes very much less power than a laptop. The processor is also much slower than most Intel/AMD processors used in PCs, so complex programs can not be executed. Pi does not have any wireless networking capability like WiFi, Bluetooth etc when compared to laptop. Pi comes with 1 GB ram for version 3 while most laptops have 2GB/4GB RAM that can be easily expanded to 16GB. Laptops can have secondary storage for about 1 TB. It also supports Flash based storage which tends to be more expensive per bit than traditional Magnetic Hard drives. Therefore the Raspberry Pi will have a smaller storage capacity than a traditional PC. 
+    
+    \section{Docker on Raspberry Pi}
+	Raspberry Pi hardware architecture is called ARM and differs from the architecture behind our regular PC, laptop or cloud instance. A binary built for either system will not execute on the other. Images or binaries that was not created by you or from true source may pose a potential threat. Docker swarm cluster can be built easily on Raspberry Pi with just two basic commands : swarm init and swarm join \cite{dockrpi}.
+
+	\section{Docker and Big Data Platform}
+	It is always been a challenge to maintain or even to have a control deployment environment. It is very difficult to identify any issues without proper deployment environment. Most of the times, issue can be fixed as simple as disabling a service or just uninstalling a software or slightly tweaking the environment. This can be easily achieved only when we have complete control of the environment \cite{simplebig}. It is very difficult to manage a distributed environment whether in cloud or not. There are lot of manual effort whenever there is an installation across multiple nodes. Docker allows anyone to quickly create, launch and test Docker containers very easily. Container offer lightweight isolation and virtualization, yielding reduced overhead, faster deployments and restarts, and simplified migration. There are lot of frameworks like, Google's Kubernetes, CoreOS, Multi-Container orchestration, etc. which comes in handy with Dockers and Docker is very lightweight when compared to a Virtual Machine. Even though Docker comes very handy in addressing many of these issues, main selling point is building consistent environments which are very easy to replicate. Especially in big data environment, instead of installing every single component from the Hadoop ecosystem, required for their development or testing environment, we can just create it once and use it any number of times and everywhere. Docker allows usage of different versions on the same tool for different jobs without any conflict. Docker containers are a great way of deploying services at scale and giving isolation to services that run on the same host and improving utilization and we can even use Dockers for scheduling batch analytical jobs.
+	
+	\section{Docker's Pitfall}
+	Docker was not designed to support the long-running containers that are needed to support production systems. While Docker gets a lot of visibility from the development and DevOps communities, its operational maturity still leaves a big void. There are no logs from containers and hence logging is difficult in a distributed Docker environment. Dockers need separate orchestration, provisioning and automation \cite{pitfall}. Managing a huge amount of containers is challenging, especially when it comes to clustering containers. Running a container need root access and due to security and governance policy, many companies may not grant root privileges for everyone. In some companies, only software from official/trusted sources can be installed on their machines. Since Docker is not included in Red Hat Enterprise Linux 6, it needs to be installed from docker.com, which is an untrusted source \cite{philip}.
 	
 	\section{Methods: Proposed Solution}
 	
@@ -264,7 +278,7 @@
 	
 	\subsubsection{Changing hostnames}
 	In order to keep the three Raspberry Pi organized it is highly advisable to assign an exclusive and distinctive hostname to each Raspberry Pi.
-The three Raspberry Pi have the following IP addresses:
+The three Raspberry Pi have the following static IP addresses:
 
 \begin{enumerate}
 	\item pi85 -  192.168.1.85
@@ -367,9 +381,8 @@ The three Raspberry Pi have the following IP addresses:
 	
 	\begin{description}
 		
-		\item[] Uma Kugan.
-		
-		\item[] Andres Castro Benavides.
+		\item[Introduction-Docker, Docker and Big Data Platform, Docker's Pitfall, Raspberry Pi, Difference between Pi and Laptop, Dockers on Pi] Uma Kugan.
+		\item[Introduction - Cloudmesh] Andres Castro Benavides.
 		
 		\item[Editing:] Andres Castro Benavides and Uma Kugan.
 		
