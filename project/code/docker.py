@@ -53,19 +53,20 @@ def instal():
          # print (line)
         step=callproc(line)
 
-  
+instal()
+
 f = open('docker-config.yaml')
 config = yaml.load(f)
 f.close()
 print (config['master'])
+docker_instal(master['name'])
+swarm_instal(master['name','ip')
 
 for worker in config['workers']
     print (worker['name'])
     print (worker['ip'])
+    
+    docker_instal(worker['name'])
+    swarm_instal(worker['name','ip')
 
-instal()
-docker_instal(config[master])
-swarm_instal(args.hostnm, args.hosttyp)
 
-if __name__ == "__main__":
-    main()
