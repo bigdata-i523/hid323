@@ -59,8 +59,8 @@ f = open('docker-config.yaml')
 config = yaml.load(f)
 f.close()
 print (config['master'])
-docker_instal(master['name'])
-swarm_instal(master['name','ip')
+docker_instal(config.master['name'])
+swarm_instal(config.master['name','ip')
 
 for worker in config['workers']
     print (worker['name'])
