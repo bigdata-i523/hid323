@@ -56,7 +56,13 @@
 	The four main internal components of docker are Docker Client and Server, Docker Images, Docker Registries, and Docker Containers.
 	\paragraph{Docker Client and Server}
 	The docker server gets the request from the docker client and then process it accordingly. Docker server and docker client can either run on the same machine or a local docker client can be connected with a remote server running on another machine \cite{turnbull2014docker}.
-	Fig. 1 Docker architecture \cite{turnbull2014docker}.
+	
+	\begin{figure}
+		\centering
+		\includegraphics[width=1.0\columnwidth]{images/docker_architecture.png}
+		\caption{Docker Architecture \cite{turnbull2014docker}} \label{fig:figure1} 
+	\end{figure}
+    
 	\paragraph{Docker Images}
 	Base image are the Operating system images such as Ubuntu 14.04 LTS, or Fedora 20 which creates a container to run Operating system. The docker file contains a list of instructions to build an image. When using docker, we start with a base image, boot up, create changes and those changes are saved in layers forming another image \cite{rad2017introduction}.
 	\paragraph{Docker Registries}
