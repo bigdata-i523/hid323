@@ -72,9 +72,10 @@ f = open('docker-config.yaml')
 config = yaml.load(f)
 f.close()
 print config['master']
-print config['worker1']
-print config['worker2']
-print config['worker3']
+
+for worker in config['workers']
+    print worker['name']
+    print worker['ip']
 
 instal()
 docker_instal(master)
