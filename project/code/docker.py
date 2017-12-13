@@ -3,6 +3,7 @@ import subprocess
 import sys
 import os
 import yaml
+import click
 
 def callproc(cmd, ignore_return_code=False):
    print('Running: \n' + cmd + '\n')
@@ -53,20 +54,28 @@ def instal():
          # print (line)
         step=callproc(line)
 
-instal()
+@click.command()
+@click.option('--filename', default='docker_config.yaml', help='Name of the Configuration File.')
 
-f = open('docker-config.yaml')
-config = yaml.load(f)
-f.close()
-print (config['master'])
-docker_instal(config.master['name'])
-swarm_instal(config.master['name','ip')
+def main(filename)
+    instal()
+    # f = open('docker-config.yaml')
+    f = open(filename)
+    config = yaml.load(f)
+    f.close()
+    print (config['master'])
+    docker_instal(config.master['name'])
+    swarm_instal(config.master['name','ip')
 
-for worker in config['workers']
-    print (worker['name'])
-    print (worker['ip'])
-    
-    docker_instal(worker['name'])
-    swarm_instal(worker['name','ip')
+    for worker in config['workers']
+        print (worker['name'])
+        print (worker['ip'])
 
+        docker_instal(worker['name'])
+        swarm_instal(worker['name', 'ip')
+
+if __name__ == '__main__':
+   main()                           
+                            
+                            
 
