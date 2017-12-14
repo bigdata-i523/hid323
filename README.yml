@@ -58,7 +58,7 @@ project:
         - Uma M Kugan
     hid:
         - 323
-    title: Plugin to cmd5 that creates a Docker Swarm cluster on 3 Raspberry Pis
+    title:  Plugin to cmd5 That Creates a Docker Swarm Cluster on 3 Raspberry Pis
     abstract: >
         Information technologies are evolving from mainly one-host environments to 
         more distributed environment. Docker Swarm makes it possible to avoid having a 
