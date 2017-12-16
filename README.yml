@@ -19,7 +19,6 @@ paper1:
     status: Review Date 11.10.2017
     title: This is my paper about NoSQL Databases in support of Big Data Applications
         and Analytics
-    type: latex
     url: https://github.com/bigdata-i523/hid323/blob/master/paper1/report.pdf
     
 paper2:
@@ -49,7 +48,6 @@ paper2:
     hid:
         - 323
     title: Big Data Security and Privacy
-    type: latex
     url: https://github.com/bigdata-i523/hid323/blob/master/paper2/
     
 project:
