@@ -22,7 +22,7 @@ paper1:
     url: https://github.com/bigdata-i523/hid323/blob/master/paper1/report.pdf
     
 paper2:
-    exclude: True
+    duplicate: True
     status: Review Date 11.06.2017
     abstract: >
         In recent history, the explosion of smart devices, social
