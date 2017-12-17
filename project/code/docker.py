@@ -55,9 +55,9 @@ def instal():
         step=callproc(line)
 
 @click.command()
-@click.option('--filename', default='docker_config.yaml', help='Name of the Configuration File.')
+@click.option('--filename', default='config.yaml', help='Name of the Configuration File.')
 
-def main(filename)
+def main(filename):
     instal()
     # f = open('docker-config.yaml')
     f = open(filename)
