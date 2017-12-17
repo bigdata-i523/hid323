@@ -42,17 +42,17 @@ def pull():
     nodes = callproc("docker node ls | grep Ready | awk -F'[[:space:]][[:space:]]+' '{print $2}'").rstrip().split('\n')
 
 def instal():
-   
-    commands='''
-       sudo apt-get update -y
+   commands = \
+        """sudo apt-get update -y
        sudo apt-get -y install curl
        sudo apt-get upgrade -y
        sudo apt-get dist-upgrade -y
        sudo apt-get -y install raspberrypi-ui-mods
-       '''
-    for line in commands:
-         # print (line)
-        step=callproc(line)
+       """
+    lines = commands.split('\n')
+    for line in lines:
+        print (line)
+        step = callproc(line)
 
 @click.command()
 @click.option('--filename', default='config.yaml', help='Name of the Configuration File.')
