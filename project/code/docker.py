@@ -63,16 +63,15 @@ def main(filename)
     f = open(filename)
     config = yaml.load(f)
     f.close()
-    print (config['master'])
-    docker_instal(config.master['name'])
-    swarm_instal(config.master['name','ip')
-
-    for worker in config['workers']
-        print (worker['name'])
-        print (worker['ip'])
-
-        docker_instal(worker['name'])
-        swarm_instal(worker['name', 'ip')
+    mastertext =  (config["master"])
+    docker_instal(mastertext["name"])
+    swarm_instal(mastertext["name"],mastertext["ip"])
+                                               
+    workerloop = (config["workers"])
+    for x in workerloop:
+        workertext = (x)
+        docker_instal(workertext["name"])
+        swarm_instal(workertext["name"],workertext["ip"])
 
 if __name__ == '__main__':
    main()                           
