@@ -2,16 +2,13 @@ master:
     name: manager
     ip: 127.0.0.1
 workers:
-    - worker:
-         name: worker1
-         ip: 127.0.0.1
-    - worker:
-         name: worker2
-         ip: 127.0.0.1
-    - worker:
-         name: worker3
-         ip: 127.0.0.1
-
-
+    - name: worker1
+      ip: 127.0.0.1
+    - name: worker2
+      ip: 127.0.0.1
+    - name: worker3
+      ip: 127.0.0.1
+         
+       
 
     
