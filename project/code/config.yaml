@@ -1,13 +1,11 @@
 master:
-    name: manager
-    ip: 127.0.0.1
+    name: gani1
+    ip: gkhomepi1
 workers:
-    - name: worker1
-      ip: 127.0.0.1
-    - name: worker2
-      ip: 127.0.0.1
-    - name: worker3
-      ip: 127.0.0.1
+    - name: gani2
+      ip: gkhomepi2
+    - name: gani3
+      ip: gkhomepi3
          
        
 
