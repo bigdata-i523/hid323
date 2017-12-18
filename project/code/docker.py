@@ -17,9 +17,9 @@ def callproc(cmd, ignore_return_code=False):
        return stdout
 
 
-def docker_instal(hostname):
+def docker_instal(hostname, username):
     cmd =  'curl -sSL https://get.docker.com | sh'
-    execssh(hostname, cmd)
+    execssh(hostname, cmd, username)
     
 
 def execssh(hostname, cmd, username=None):
@@ -29,13 +29,13 @@ def execssh(hostname, cmd, username=None):
         cmd = 'ssh ' + username + '@' + hostname + ' "' + cmd + '"'
     callproc(cmd)
       
-def swarm_instal(hostname, hosttyp):
+def swarm_instal(hostname, hosttyp, username):
     if hosttyp == "Master":
         swarmcmd = 'sudo docker swarm init'
-        execssh(hostname,swarmcmd)
+        execssh(hostname,swarmcmd, username)
     else:
         joincmd = 'sudo docker swarm join-token worker'
-        jointkn = execssh(hostname,joincmd)
+        jointkn = execssh(hostname,joincmd, username)
         execssh(jointkn)
         
 def pull():
@@ -64,14 +64,14 @@ def main(filename):
     config = yaml.load(f)
     f.close()
     mastertext =  (config["master"])
-    docker_instal(mastertext["name"])
-    swarm_instal(mastertext["name"],mastertext["ip"])
+    docker_instal(mastertext["ip"],mastertext["name"])
+    swarm_instal(mastertext["ip"],'Master',mastertext["name"])
                                                
     workerloop = (config["workers"])
     for x in workerloop:
         workertext = (x)
-        docker_instal(workertext["name"])
-        swarm_instal(workertext["name"],workertext["ip"])
+        docker_instal(workertext["ip"],workertext["name"])
+        swarm_instal(workertext["ip"],'Worker',workertext["name"])
 
 if __name__ == '__main__':
    main()                           
